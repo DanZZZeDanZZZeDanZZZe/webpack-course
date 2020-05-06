@@ -1,6 +1,10 @@
 import Post from './Post.js'
-import '.styles/styles.css'
+import json from './'
+import WebapckLogo from './assets/webpack-logo.png';
+import './styles/styles.css'
 
-const post = new Post('Webpack Post title')
+const post = new Post('Webpack Post title', WebapckLogo)
 
 console.log('Post to String', post.toString())
+
+console.log('JSON:', json)
