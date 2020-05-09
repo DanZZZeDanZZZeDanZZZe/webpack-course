@@ -18,17 +18,17 @@ module.exports = {
     new HTMLWebpackPlugin({
       template: './index.html'
     }),
-    new CleanWebpackPlugin
+    new CleanWebpackPlugin()
   ],
   module: {
     rules: [
       {
         test: /\.css$/,
         use: ['style-loader','css-loader']
-      }
+      },
       {
-        test: /\.(png | jpg | svg | gif)$/,
-        use: ['file-loader']
+        test: /\.(png|jpe?g|gif)$/i,
+        loader: 'file-loader',
       }
     ]
   }
