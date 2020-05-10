@@ -4,10 +4,10 @@
   "description": "webpack course",
   "private": true,
   "scripts": {
-    "dev": "npx webpack --mode development",
-    "build": "npx webpack --mode production",
-    "watch": "npx webpack --mode development --watch",
-    "start": "webpack-dev-server --mode development --open"
+    "dev": "npx cross-env NODE_ENV=development webpack --mode development",
+    "build": "npx cross-env NODE_ENV=production webpack --mode production",
+    "watch": "npx cross-env NODE_ENV=development webpack --mode development --watch",
+    "start": "npx cross-env NODE_ENV=development webpack-dev-server --mode development --open"
   },
   "keywords": [],
   "author": "Grankin Artem <jyjyjyj3@gmail.com>",
@@ -15,6 +15,7 @@
   "devDependencies": {
     "clean-webpack-plugin": "^3.0.0",
     "copy-webpack-plugin": "^5.1.1",
+    "cross-env": "^7.0.2",
     "css-loader": "^3.5.3",
     "file-loader": "^6.0.0",
     "html-webpack-plugin": "^4.3.0",
