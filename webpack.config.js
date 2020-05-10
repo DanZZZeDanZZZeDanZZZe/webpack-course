@@ -1,7 +1,8 @@
 const path = require('path')
 const HTMLWebpackPlugin = require('html-webpack-plugin')
 const {CleanWebpackPlugin} = require('clean-webpack-plugin')
-
+const CopyWebpackPlugin = require('copy-webpack-plugin')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 
 module.exports = {
   context: path.resolve(__dirname, 'src'),
@@ -26,17 +27,32 @@ module.exports = {
       chunks: 'all'
     }
   },
+  devServer: {
+    port: 4200
+  },
   plugins: [
     new HTMLWebpackPlugin({
       template: './index.html'
     }),
-    new CleanWebpackPlugin()
+    new CleanWebpackPlugin(),
+    new CopyWebpackPlugin([
+      {
+        context: path.resolve(__dirname),
+        from: 'src/favicon.ico',
+      }
+    ]),
+    new MiniCssExtractPlugin({
+      filename: '[name].[contenthash].css'
+    })
   ],
   module: {
     rules: [
       {
         test: /\.css$/,
-        use: ['style-loader','css-loader']
+        use: [{
+          loader: MiniCssExtractPlugin.loader,
+          options: {}
+        }, 'css-loader']
       },
       {
         test: /\.(png|jpe?g|gif)$/i,
