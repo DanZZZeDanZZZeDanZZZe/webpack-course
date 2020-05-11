@@ -6,6 +6,7 @@ import xml from './assets/data.xml'
 import WebapckLogo from './assets/webpack-logo'
 import './styles/styles.css'
 import './styles/less.less'
+import './styles/sass.sass'
 
 const post = new Post('Webpack Post title', WebapckLogo)
 

@@ -73,7 +73,17 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.(less|css)$/,
+        test: /\.css$/,
+        use: [{
+          loader: MiniCssExtractPlugin.loader,
+          options: {
+            hmr: isDev,
+            reloadAll: true
+          }
+        }, 'css-loader']
+      },
+      {
+        test: /\.less$/,
         use: [{
           loader: MiniCssExtractPlugin.loader,
           options: {
@@ -81,6 +91,16 @@ module.exports = {
             reloadAll: true
           }
         }, 'css-loader', 'less-loader']
+      },
+      {
+        test: /\.s[ac]ss$/,
+        use: [{
+          loader: MiniCssExtractPlugin.loader,
+          options: {
+            hmr: isDev,
+            reloadAll: true
+          }
+        }, 'css-loader', 'sass-loader']
       },
       {
         test: /\.(png|jpe?g|gif)$/i,
